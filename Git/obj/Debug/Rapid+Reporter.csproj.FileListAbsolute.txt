@@ -343,5 +343,5 @@ C:\visualstudiosolutions\RapidReporterFlickrAddon_V0008_2\RapidReporterFlickrAdd
 C:\visualstudiosolutions\RapidReporterFlickrAddon_V0008_2\RapidReporterFlickrAddon_V0008\RapidReporterFlickrAddon_V0006\obj\Debug\ResGen.write.1.tlog
 C:\visualstudiosolutions\RapidReporterFlickrAddon_V0008_2\RapidReporterFlickrAddon_V0008\RapidReporterFlickrAddon_V0006\obj\Debug\RapidReporter.exe.manifest
 C:\visualstudiosolutions\RapidReporterFlickrAddon_V0008_2\RapidReporterFlickrAddon_V0008\RapidReporterFlickrAddon_V0006\obj\Debug\RapidReporter.application
-C:\katerina\kyh\projektkunskap\RepositoryPVT\Git\obj\Debug\RapidReporter.exe
-C:\katerina\kyh\projektkunskap\RepositoryPVT\Git\obj\Debug\RapidReporter.pdb
+C:\Users\hugo\projects\git_pvt10rr_rep\Git\obj\Debug\RapidReporter.exe
+C:\Users\hugo\projects\git_pvt10rr_rep\Git\obj\Debug\RapidReporter.pdb
