@@ -7,6 +7,8 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using NUnit.Framework;
+
 
 namespace Rapid_Reporter
 {
@@ -15,7 +17,7 @@ namespace Rapid_Reporter
 
         public StreamWriter m_fileTags;
         private string m_strTags = "";
-        public static string hashcode;
+
 
         /** Variables **/
         /***************/
@@ -57,16 +59,16 @@ namespace Rapid_Reporter
         // Start Session and Close Session prepare/finalize the log file
         public void StartSession()
         {
-            GetUniqueKey(10);
+            FlickrAddon.GetUniqueKey(10);
             Logger.record("[StartSession]: Session configuration starting", "Session", "info");
 
             startingTime = DateTime.Now; // The time the session started is used for many things, like knowing the session file name
-            sessionFile = startingTime.ToString("yyyyMMdd_HHmmss") + "_" + hashcode + ".csv";
+            sessionFile = startingTime.ToString("yyyyMMdd_HHmmss") + "_" + FlickrAddon.hashcode + ".csv";  //HASCODE VARIABLE ADDED__________<-------######
             sessionFileFull = workingDir + sessionFile; // All files should be written to a working directory -- be it current or not.
             SaveToSessionNotes(columnHeaders + "\n"); // Headers of the notes table
             UpdateNotes("(Rapid Reporter version)", System.Windows.Forms.Application.ProductVersion);
             UpdateNotes("Session Reporter", tester);
-            UpdateNotes("Hashcode", hashcode);
+            UpdateNotes("Hashcode", FlickrAddon.hashcode);  //HASCODE VARIABLE ADDED__________<-------#######
             UpdateNotes("Session Charter", charter);
         }
 
@@ -75,24 +77,7 @@ namespace Rapid_Reporter
             return m_strTags;
         }
 
-        public static string GetUniqueKey(int length)
-        {
-            string guidResult = string.Empty;
 
-            while (guidResult.Length < length)
-            {
-                // Get the GUID.
-                guidResult += Guid.NewGuid().ToString().GetHashCode().ToString("x");
-            }
-
-            // Make sure length is valid.
-            if (length <= 0 || length > guidResult.Length)
-                throw new ArgumentException("Length must be between 1 and " + guidResult.Length);
-
-            // Return the first length bytes.
-            hashcode = guidResult.Substring(0, length);
-            return hashcode;
-        }
         public void CloseSession() // Not closing directly, we first finalize the session
         {
             Logger.record("[CloseSession]: Session closing...", "Session", "info");
@@ -284,3 +269,5 @@ namespace Rapid_Reporter
         }
     }
 }
+
+

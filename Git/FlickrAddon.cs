@@ -4,6 +4,15 @@ using System.Text;
 using FlickrNet;
 using System.Threading;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
+using System.Windows.Media.Imaging;
 
 namespace Rapid_Reporter
 {
@@ -13,6 +22,8 @@ namespace Rapid_Reporter
         private string m_frob;
         private string m_token;
         private Auth m_auth;
+        public static string hashcode;
+        bool m_flickrLoggedIn = false;
 
         private string m_tags;
 
@@ -57,12 +68,46 @@ namespace Rapid_Reporter
             }
         }
 
+        public static string GetUniqueKey(int length)
+        {
+            string guidResult = string.Empty;
+
+            while (guidResult.Length < length)
+            {
+                // Get the GUID.
+                guidResult += Guid.NewGuid().ToString().GetHashCode().ToString("x");
+            }
+
+            // Make sure length is valid.
+            if (length <= 0 || length > guidResult.Length)
+                throw new ArgumentException("Length must be between 1 and " + guidResult.Length);
+
+            // Return the first length bytes.
+            hashcode = guidResult.Substring(0, length);
+            return hashcode;
+        }
         public string GetCurrentUser()
         {
                 return m_auth.User.UserName; 
  
         }
+        public static void CreatBox()
+        {
+            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to login ti Flickr?", "FLickr Login", MessageBoxButton.YesNo);
+            FlickrAddon test = new FlickrAddon();
+            if (result == MessageBoxResult.Yes) 
+            {
+                
+                test.Login(); 
+                test.m_flickrLoggedIn = true;
+            }
+            else
+            {
+                test.m_flickrLoggedIn = false;
+            }
 
+           
+        }
 
         public string Upload(string pFile, string pName, string pDesc, string pTags)
         {
@@ -75,7 +120,7 @@ namespace Rapid_Reporter
                 }
                 catch (FlickrException f)
                 {
-                    MessageBox.Show(f.Message);
+                    System.Windows.MessageBox.Show(f.Message); 
                 }
 
                 if (IsAuthenticated())

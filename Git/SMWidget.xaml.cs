@@ -85,21 +85,7 @@ namespace Rapid_Reporter
         public SMWidget()
         {
 
-
-
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to login ti Flickr?", "FLickr Login", MessageBoxButton.YesNo);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                m_flickr.Login();
-                m_flickrLoggedIn = true;
-            }
-            else
-            {
-                m_flickrLoggedIn = false;
-            }
-
-           
+            FlickrAddon.CreatBox(); //Kallar på creatbox i Flickraddon #ADDED CODE#
 
             Logger.record("[SMWidget]: App constructor. Initializing.", "SMWidget", "info");
             InitializeComponent();
@@ -303,7 +289,7 @@ namespace Rapid_Reporter
                     prevType.Text = "↓ " + currentSession.noteTypes[prevNoteType] + ":";
                     nextType.Text = "↑ " + currentSession.noteTypes[nextNoteType] + ":";
 
-                    if (m_flickrLoggedIn)
+                    if (m_flickrLoggedIn)  // #ADDED CODE#________________---------------This If and Else displays if you are logged in our not in rapid reporter---------------------______________
                     {
                         FlickrInlogg.Text = "Account: " + m_flickr.GetCurrentUser(); //currentSession.noteTypes[ReporterNoteName] 
                     }
@@ -311,7 +297,7 @@ namespace Rapid_Reporter
                     {
                         FlickrInlogg.Text = "Offline";
                     }
-
+                    //-------------------------------------------_________________________________________________________________________________________________________________________________
                     currentSession.StartSession(); ProgressGo(90); t90.IsChecked = true;
                     ScreenShot.IsEnabled = true; RTFNoteBtn.IsEnabled = true;  ToggleUploadIcon.IsEnabled = true;
 
@@ -340,15 +326,15 @@ namespace Rapid_Reporter
             about.ShowDialog();
         }
 
-        private void ChangeAccount_Click(object sender, RoutedEventArgs e)
+        private void ChangeAccount_Click(object sender, RoutedEventArgs e) // #ADDED CODE#________________---------------CHANGE ACCOUNT---------------------_________________________
         {
             Logger.record("[ChangeAccount_Click]: Change Account", "SMWidget", "info");
            // string url = flickr.AuthCalcWebUrl(AuthLevel.Write);
             m_flickr.LogOut();
             FlickrInlogg.Text = "Account: offline"; 
         }
-
-        private void ToggleUpload_Click(object sender, RoutedEventArgs e)
+        //-------------------------------------------_________________________________________________________________________________________________________________________________
+        private void ToggleUpload_Click(object sender, RoutedEventArgs e) // #ADDED CODE#________________---------------TOGGLE UPLOAD---------------------____________________________
         {
             Logger.record("[ToggleUpload_Click]: ToggleUpload", "SMWidget", "info");
             SMWidget.ToggleUpload2 = !SMWidget.ToggleUpload2;
@@ -367,7 +353,7 @@ namespace Rapid_Reporter
 
        
         }
-
+        //-------------------------------------------_________________________________________________________________________________________________________________________________
         //OpenFolder
         // Used to reach the working folder, where attachments and reports are.
         private void WorkingFolder_Click(object sender, RoutedEventArgs e)
@@ -523,7 +509,7 @@ namespace Rapid_Reporter
             bool exDrRetry = false;
 
             // Name the screenshot, save to disk
-            screenshotName = currentScreenshot++.ToString() + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_" + Session.hashcode + ".jpg";
+            screenshotName = currentScreenshot++.ToString() + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_" + FlickrAddon.hashcode + ".jpg"; // HASCODE ADDED!!!___<-----#########
 
        
 
