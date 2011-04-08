@@ -183,7 +183,7 @@ namespace Rapid_Reporter
                         // Skip over other report files
                         if (file.Contains(report_prefix)) continue;
                         // Skip over files that don't end like ########_######.csv.
-                        if (!( System.Text.RegularExpressions.Regex.IsMatch(file, ".*\\d{8}_\\d{6}.csv$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))) continue;
+                      //  if (!( System.Text.RegularExpressions.Regex.IsMatch(file, ".*\\d{8}_\\d{6}.csv$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))) continue;
 
                         StreamReader sr = new StreamReader(file);
                         sr.ReadLine(); // We skip the first line (with the headers);

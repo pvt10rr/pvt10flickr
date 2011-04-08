@@ -39,8 +39,7 @@ namespace Rapid_Reporter
         
         // Session Notes variables
         private int currentNoteType = 0;        // The actual types are controlled by the Session class.
-        private int prevNoteType = 0; 
-        private int nextNoteType = 0; // Used for the hints about the next note up or down.
+        private int prevNoteType = 0; private int nextNoteType = 0; // Used for the hints about the next note up or down.
         private int currentScreenshot = 1;      // The number of the screenshot (increases by 1). Helps putting them in order, and finding them between multiple the files.
         private string screenshotName = "";     // Attached to a Session Note.
         public string rtfNoteName = "";         // Attached to a Session Note. Public because it is used *directly* by the RTFNote
@@ -88,7 +87,7 @@ namespace Rapid_Reporter
 
 
 
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to login to Flickr?", "Flickr Login", MessageBoxButton.YesNo);
+            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to login ti Flickr?", "FLickr Login", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {
