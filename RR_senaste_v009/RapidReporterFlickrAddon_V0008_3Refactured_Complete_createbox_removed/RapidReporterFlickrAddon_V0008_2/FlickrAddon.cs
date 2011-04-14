@@ -136,6 +136,12 @@ namespace Rapid_Reporter
             m_flickr.AuthToken = null;
             System.Diagnostics.Process.Start("http://www.flickr.com/logout.gne?");
         }
+        
+        
+        public HugosTestFunktion()
+        {
+        
+        }
 
     }
 
